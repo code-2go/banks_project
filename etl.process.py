@@ -15,6 +15,14 @@ table_name = 'Largest_banks'
 table_schema = ['Name', 'MC_USD_Billion']
 conn_sql = sqlite3.Connection(rf'{base_path}\db_files\{db_name}')
 
+def log(message):
+    timestamp_format = '%Y-%b-%d | %H:%M:%S '
+    now = datetime.now()
+    timestamp = now.strftime(timestamp_format)
+    with open(log_path, 'a') as log_file:
+        log_file.write(f'{timestamp} - {message} \n')
+    
+
 def donwload_file(path, file_name):
     response = requests.get(FX)
     if response.status_code == 200:
@@ -24,4 +32,5 @@ def donwload_file(path, file_name):
     else:
         print(f'Download Fail. Status Code: {response.status_code}')
 
+log('Download Files Process')
 donwload_file(FX, '\FX_data.csv')
