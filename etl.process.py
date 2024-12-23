@@ -32,5 +32,28 @@ def donwload_file(path, file_name):
     else:
         print(f'Download Fail. Status Code: {response.status_code}')
 
-log('Download Files Process')
-donwload_file(FX, '\FX_data.csv')
+def extract(url):
+    content = requests.get(url).text
+    object_soup = BeautifulSoup(content, 'html.parser')
+    tables = object_soup.find_all('tbody')
+    rows = tables[0].find_all('tr')
+    data = []
+    for row in rows:
+        cell = row.find_all('td')
+        if len(cell) != 0:
+            if cell[1].find('a') is not None:
+                cell = row.find_all('td')
+                data.append({
+                    'Name': cell[1].text.strip(),
+                    'MC_USD_Billion': cell[2].text.strip()
+                })
+            
+    df = pd.DataFrame(data, columns=table_schema)
+    return df
+
+
+# log('Download Files Process')
+# donwload_file(FX, '\FX_data.csv')
+log('Extraction Process Started')
+extract(url)
+log('Extraction Process Ended')
