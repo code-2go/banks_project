@@ -4,16 +4,16 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from datetime import datetime 
 
-url = r'https://web.archive.org/web/20230908091635 /https://en.wikipedia.org/wiki/List_of_largest_banks'
-FX = r'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/exchange_rate.csv'
+url = r"https://web.archive.org/web/20230908091635 /https://en.wikipedia.org/wiki/List_of_largest_banks"
+FX = r"https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/exchange_rate.csv"
 
-base_path = r'C:\Users\b_gur\OneDrive\Documentos\IBM\banks_project'
-log_path = rf'{base_path}\log\code_log.txt'
-csv_path = rf'{base_path}\csv_files'
+base_path = r"C:\Users\b_gur\OneDrive\Documentos\IBM\banks_project"
+log_path = rf"{base_path}\log\code_log.txt"
+csv_path = rf"{base_path}\csv_files"
 db_name = 'Banks.db'
 table_name = 'Largest_banks'
 table_schema = ['Name', 'MC_USD_Billion']
-conn_sql = sqlite3.Connection(rf'{base_path}\db_files\{db_name}')
+conn_sql = sqlite3.Connection(rf"{base_path}\db_files\{db_name}")
 
 def log(message):
     timestamp_format = '%Y-%b-%d | %H:%M:%S '
@@ -26,7 +26,7 @@ def log(message):
 def donwload_file(path, file_name):
     response = requests.get(FX)
     if response.status_code == 200:
-        with open(f'{csv_path}{file_name}', 'wb') as file:
+        with open(f"{csv_path}{file_name}", 'wb') as file:
             file.write(response.content)
             print(f'Download was a Success.')
     else:
@@ -45,15 +45,24 @@ def extract(url):
                 cell = row.find_all('td')
                 data.append({
                     'Name': cell[1].text.strip(),
-                    'MC_USD_Billion': cell[2].text.strip()
-                })
-            
+                    'MC_USD_Billion': cell[2].contents[0].strip()
+                })       
     df = pd.DataFrame(data, columns=table_schema)
     return df
 
-
-# log('Download Files Process')
+def load_file_csv(df, fileName):
+    df.to_csv(rf"{base_path}\csv_files\{fileName}")
+    print('File Saved as success.')
+    
+# log('Download Files Process Started')
 # donwload_file(FX, '\FX_data.csv')
-log('Extraction Process Started')
-extract(url)
-log('Extraction Process Ended')
+# log('Download Files Process Ended')
+
+# log('Extraction Process Started')
+banks_data = extract(url)
+# log('Extraction Process Ended')
+
+# log('Load file.csv Process Started')
+# load_file_csv(banks_data, r'\banks_data_raw.csv')
+# log('Load file.csv Process Ended')
+
