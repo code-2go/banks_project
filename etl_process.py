@@ -48,21 +48,40 @@ def extract(url):
                     'MC_USD_Billion': cell[2].contents[0].strip()
                 })       
     df = pd.DataFrame(data, columns=table_schema)
+    df['MC_USD_Billion'] = df['MC_USD_Billion'].astype(float)
     return df
 
 def load_file_csv(df, fileName):
-    df.to_csv(rf"{base_path}\csv_files\{fileName}")
+    df.to_csv(rf"{base_path}\csv_files\{fileName}.csv")
     print('File Saved as success.')
     
+def currency_converter(df):
+    fx_rate = pd.read_csv(rf"{base_path}\csv_files\FX_rate.csv")
+    conversion_dict = {}
+    for i, row in fx_rate.iterrows():
+        conversion_dict[row['Currency']] = row['Rate']
+    for currency, rate in conversion_dict.items():
+        column_name = f'MC_{currency}_Billion'
+        df[column_name] = round((df['MC_USD_Billion'] * rate), 2)
+    return df
+
+
 # log('Download Files Process Started')
-# donwload_file(FX, '\FX_data.csv')
+# donwload_file(FX, '\FX_rate.csv')
 # log('Download Files Process Ended')
 
 # log('Extraction Process Started')
-banks_data = extract(url)
+Largest_banks = extract(url)
 # log('Extraction Process Ended')
 
 # log('Load file.csv Process Started')
 # load_file_csv(banks_data, r'\banks_data_raw.csv')
 # log('Load file.csv Process Ended')
 
+# log('Transform Phase Started')
+Largest_banks = currency_converter(Largest_banks)
+# log('Transform Phase Ended')
+
+# log('Load file.csv Process Started')
+load_file_csv(Largest_banks, table_name)
+# log('Load file.csv Process Ended')
