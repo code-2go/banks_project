@@ -1,0 +1,24 @@
+2025-Jan-07 | 23:27:44  - Download Files Process Started 
+2025-Jan-07 | 23:27:45  - Download Files Process Ended 
+2025-Jan-07 | 23:27:45  - Extraction Process Started 
+2025-Jan-07 | 23:27:46  - Extraction Process Ended 
+2025-Jan-07 | 23:27:46  - Load file.csv Process Started 
+2025-Jan-07 | 23:27:46  - Load file.csv Process Ended 
+2025-Jan-07 | 23:27:46  - Transform Phase Started 
+2025-Jan-07 | 23:27:46  - Transform Phase Ended 
+2025-Jan-07 | 23:27:46  - Load file.csv Process Started 
+2025-Jan-07 | 23:27:46  - Load file.csv Process Ended 
+2025-Jan-07 | 23:27:46  - Load to Database Process Started 
+2025-Jan-07 | 23:27:46  - Load to Database Process Ended 
+2025-Jan-07 | 23:29:09  - Download Files Process Started 
+2025-Jan-07 | 23:29:10  - Download Files Process Ended 
+2025-Jan-07 | 23:29:10  - Extraction Process Started 
+2025-Jan-07 | 23:29:10  - Extraction Process Ended 
+2025-Jan-07 | 23:29:10  - Load file.csv Process Started 
+2025-Jan-07 | 23:29:10  - Load file.csv Process Ended 
+2025-Jan-07 | 23:29:10  - Transform Phase Started 
+2025-Jan-07 | 23:29:10  - Transform Phase Ended 
+2025-Jan-07 | 23:29:10  - Load file.csv Process Started 
+2025-Jan-07 | 23:29:10  - Load file.csv Process Ended 
+2025-Jan-07 | 23:29:10  - Load to Database Process Started 
+2025-Jan-07 | 23:29:10  - Load to Database Process Ended 
