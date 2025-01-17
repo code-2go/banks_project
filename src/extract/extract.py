@@ -4,9 +4,9 @@ import pandas as pd
 import requests
 import os
 
-def donwload_file(url, file_name):
+def download_file(url, file_name):
     response = requests.get(url)
-    path = os.path.join(CSV_PATH, "bronze", file_name)
+    path = os.path.join(CSV_PATH, "_raw", file_name)
     if response.status_code == 200:
         if not os.path.isfile(path):
             with open(f"{path}.csv", 'wb') as file:

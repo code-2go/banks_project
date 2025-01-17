@@ -4,7 +4,7 @@ import os
 
 
 def currency_converter(df):
-    path = os.path.join(BASE_PATH, "csv_files", "bronze", "exchange_rate.csv")
+    path = os.path.join(BASE_PATH, "data", "_raw", "exchange_rate.csv")
     fx_rate = pd.read_csv(path)
     conversion_dict = {}
     for i, row in fx_rate.iterrows():

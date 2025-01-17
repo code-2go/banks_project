@@ -1,7 +1,7 @@
 from src.config import CSV_PATH
 import os
 
-def load_file_csv(df, file_name, layer='bronze'):
+def load_file_csv(df, file_name, layer='_raw'):
     path = os.path.join(CSV_PATH, layer, file_name)
     if not os.path.isfile(path):
         df.to_csv(f"{path}.csv")

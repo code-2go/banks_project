@@ -7,9 +7,9 @@ DOWNLOAD = r"https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/
 
 # Paths
 BASE_PATH = r"C:\Users\b_gur\OneDrive\Documentos\IBM\banks_project"
-CSV_PATH = os.path.join(BASE_PATH, "csv_files")
+CSV_PATH = os.path.join(BASE_PATH, "data")
 LOG_PATH = os.path.join(BASE_PATH, "src", "utils", "code_log.txt")
-DB_PATH = os.path.join(BASE_PATH, "db_files", "Banks.db")
+DB_PATH = os.path.join(BASE_PATH, "db", "Banks.db")
 
 
 # Database
