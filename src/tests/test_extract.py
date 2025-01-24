@@ -18,9 +18,9 @@ class TestExtract(unittest.TestCase):
         mock_get.return_value = mock_response
 
         df = extract("mock_url")
-        self.assertFalse(df.empty, "O DataFrame não deve estar vazio.")
-        self.assertEqual(df.loc[0, "Name"], "JPMorgan Chase", "O nome do primeiro banco deve ser 'JPMorgan Chase'.")
-        self.assertEqual(df.loc[0, "MC_USD_Billion"], 432.92, "O valor esperado para MC_USD_Billion deve ser '432.92'.")
+        self.assertFalse(df.empty, "The dataframe should not be empyt.")
+        self.assertEqual(df.loc[0, "Name"], "JPMorgan Chase", "The name of the first bank should be 'JPMorgan Chase'.")
+        self.assertEqual(df.loc[0, "MC_USD_Billion"], 432.92, "The expected value for MC_USD_Billion should be '432.92'.")
 
 class TestDownload(unittest.TestCase):
     @patch('requests.get')
@@ -34,7 +34,7 @@ class TestDownload(unittest.TestCase):
             file_path = os.path.join(tmp_dir, "sample.csv")
             download_file("mock_url", file_path)
             print(f"Arquivo Criado: {file_path}")
-            self.assertTrue(os.path.abspath(file_path), "O arquivo deve ser baixado e salvo.")
+            self.assertTrue(os.path.abspath(file_path), "The file must be downloaded and saved")
 
 if __name__ == "__main__":
     unittest.main()
