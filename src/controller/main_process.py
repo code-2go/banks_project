@@ -3,7 +3,7 @@ from src.load.load_db import load_to_database
 from src.load.load_csv import load_file_csv
 from src.transform.transform import currency_converter
 from src.utils.log import log
-from src.config import URL, TABLE_NAME, DOWNLOAD
+from src.config import URL, TABLE_NAME, DOWNLOAD, CONN_SQL
 
 log('Download Files Process Started')
 download_file(DOWNLOAD, 'exchange_rate')
@@ -26,5 +26,5 @@ load_file_csv(Largest_banks, TABLE_NAME, "final")
 log('Load file.csv Process Ended')
 
 log('Load to Database Process Started')
-load_to_database(Largest_banks)
+load_to_database(Largest_banks, TABLE_NAME, CONN_SQL)
 log('Load to Database Process Ended')

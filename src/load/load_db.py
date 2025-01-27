@@ -1,6 +1,10 @@
-from src.config import TABLE_NAME, CONN_SQL
 import os
 
-def load_to_database(df):
-    df.to_sql(TABLE_NAME, CONN_SQL, if_exists="replace", index=False)
-    print(f'The dataframe has been export to {TABLE_NAME}.db')
+def load_to_database(df, table_name, conn):
+    try: 
+        df.to_sql(table_name, conn, if_exists="replace", index=False)
+        print(f'The dataframe has been export to {table_name}.db')
+        return True
+    except Exception:
+        print("")
+        raise
