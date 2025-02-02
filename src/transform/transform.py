@@ -46,7 +46,7 @@ def currency_converter(df):
         raise
 
     if df.empty:
-        print('"WARNING: The input DataFrame is empty. Returning an empty DataFrame.')
+        print('WARNING: The input DataFrame is empty. Returning an empty DataFrame.')
     
     return df    
  
