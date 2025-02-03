@@ -12,36 +12,35 @@ Os dados utilizados neste projeto foram extraídos do [Wikipedia - Largest Banks
 - Implementar **testes automatizados** para garantir a robustez do pipeline.
 
 ## Tecnologias Utilizadas
-- **Python** (ETL e testes)
-- **Pandas** (Manipulação de dados)
-- **BeautifulSoup** (Web Scraping)
-- **SQLite3** (Armazenamento de dados)
-- **Unittest e Mock** Testes
+**Web Scraping:** Requests, BeautifulSoup  
+**Manipulação de Dados**: Pandas  
+**Armazenamento:** SQLite3  
+**Testes:** Unittest, Mock, Tempfile  
 
 ## Arquitetura do Projeto
 
 ```
 banks_project/
 ├── data/
-│   ├── raw/             - Dados brutos extraídos
+│   ├── raw/                 - Dados brutos extraídos
 │   │   ├── banks_data_raw.csv
 │   │   ├── exchange_rate.csv
-│   ├── final/           - Dados transformados
+│   ├── final/               - Dados transformados
 │   │   ├── largest_banks.csv
 ├── db/
-│   ├── Banks.db         - Banco de dados SQLite
-├── src/                 - Código-fonte do projeto
-│   ├── controller/      - Orquestração do pipeline
+│   ├── Banks.db             - Banco de dados SQLite
+├── src/                     - Código-fonte do projeto
+│   ├── controller/          - Orquestração do pipeline
 │   │   ├── main_process.py
-│   ├── extract/         - Módulo de extração de dados (web scraping e download de arquivos)
-│   ├── load/            - Módulo de carga 
-│   ├── tests/           - Testes unitários e mocks
-│   ├── transform/       - Módulo de transformação
-│   ├── utils/           - Funções auxiliares e log
-│   ├── config.py        - Configurações globais
+│   ├── extract/             - Módulo de extração de dados (web scraping e download de arquivos)
+│   ├── load/                - Módulo de carga 
+│   ├── tests/               - Testes unitários e mocks
+│   ├── transform/           - Módulo de transformação
+│   ├── utils/               - Funções auxiliares e log
+│   ├── config.py            - Configurações globais
 ├── README.md
-├── requirements.txt     - Dependências do projeto
-└── .gitignore           - Arquivos ignorados pelo Git
+├── requirements.txt         - Dependências do projeto
+└── .gitignore               - Arquivos ignorados pelo Git
 ```
 
 ##  Como Executar o Projeto
@@ -53,8 +52,8 @@ banks_project/
 2. **Crie um ambiente virtual e instale as dependências**:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # Linux/macOS
-   venv\Scripts\activate     # Windows
+   source venv/bin/activate  - Linux/macOS
+   venv\Scripts\activate     - Windows
    pip install -r requirements.txt
    ```
 3. **Execute o pipeline ETL**:
@@ -63,7 +62,7 @@ banks_project/
    ```
 
 ##  Testes Automatizados
-Para garantir a confiabilidade do pipeline, testes unitários foram implementados usando `unittest` e `mock`.
+Para garantir a confiabilidade do pipeline, testes unitários foram implementados usando `unittest` , `mock` e `tempfile`. 
 
 Para rodar os testes, utilize:
 ```bash
@@ -76,9 +75,9 @@ Os testes cobrem:
 - **Transformação** dos dados (`currency_converter`)
 - **Carga no banco de dados** (`load_to_database`)
 
-##  Possíveis Melhorias Futuras
+##  Possíveis Melhorias
 - Implementar logging estruturado ao invés de `print()`.
-- Melhorar a orquestração com **Apache Airflow** ou **Prefect**.
+- Melhorar a orquestração com alguma ferramenta especifica, como Apache Airflow.
 - Adicionar suporte para mais fontes de dados (API, JSON, etc.).
 
 ##  Contato e Conexão
